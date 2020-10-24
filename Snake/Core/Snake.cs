@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Snake.Core
 {
@@ -20,17 +22,39 @@ namespace Snake.Core
 
         public void Move()
         {
-            if (_direction == Direction.UP)
+            Point tail = _list.First();
+            _list.Remove(tail);
+            Point head = GetNextPoint();
+            _list.Add(head);
+            tail.Clear();
+            head.Draw();
+        }
+
+        private Point GetNextPoint()
+        {
+            Point head = new Point(_list.Last());
+            head.Move(1,_direction);
+            return head;
+        }
+
+        public void HandleClick(ConsoleKey consoleKey)
+        {
+            switch (consoleKey)
             {
-            }
-            else if (_direction == Direction.RIGHT)
-            {
-            }
-            else if (_direction == Direction.DOWN)
-            {
-            }
-            else if (_direction == Direction.LEFT)
-            {
+                 case ConsoleKey.UpArrow:
+                     _direction = Direction.UP;
+                     break;
+                 case ConsoleKey.DownArrow:
+                     _direction = Direction.DOWN;
+                     break;
+                 case ConsoleKey.RightArrow:
+                     _direction = Direction.RIGHT;
+                     break;
+                 case ConsoleKey.LeftArrow:
+                     _direction = Direction.LEFT;
+                     break;
+                 default:
+                     break;
             }
         }
     }

@@ -32,11 +32,11 @@ namespace Snake.Core
         {
             if (direction == Direction.UP)
             {
-                _y = _y + offset;
+                _y = _y - offset;
             }
             else if (direction == Direction.DOWN)
             {
-                _y = _y - offset;
+                _y = _y + offset;
             }
             else if (direction == Direction.RIGHT)
             {
@@ -50,6 +50,12 @@ namespace Snake.Core
         public override string ToString()
         {
             return $"{_x} {_y} {_sym}";
+        }
+
+        public void Clear()
+        {
+            _sym = ' ';
+            Draw();
         }
     }
 }

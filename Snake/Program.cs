@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Snake
 {
@@ -17,12 +18,21 @@ namespace Snake
             upBorder.Draw();
             downBorder.Draw();
 
-
             Point tailPoint = new Point(5, 5, '*');
             Snake snake = new Snake(tailPoint, 10, Direction.RIGHT);
             snake.Draw();
-            
-            
+
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo info = Console.ReadKey();
+                    snake.HandleClick(info.Key);
+                }
+                Thread.Sleep(100);
+                snake.Move();
+            }
+
             Console.Read();
         }
     }
