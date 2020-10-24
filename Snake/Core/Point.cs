@@ -8,6 +8,12 @@ namespace Snake.Core
         private int _y;
         private char _sym;
 
+        public char Sym
+        {
+            get => _sym;
+            set => _sym = value;
+        }
+
         public Point(int x, int y, char sym)
         {
             _x = x;
@@ -41,7 +47,8 @@ namespace Snake.Core
             else if (direction == Direction.RIGHT)
             {
                 _x = _x + offset;
-            }else if (direction == Direction.LEFT)
+            }
+            else if (direction == Direction.LEFT)
             {
                 _x = _x - offset;
             }
@@ -56,6 +63,11 @@ namespace Snake.Core
         {
             _sym = ' ';
             Draw();
+        }
+
+        public bool IsHit(Point other)
+        {
+            return other._x == _x && other._y == _y;
         }
     }
 }

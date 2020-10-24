@@ -22,13 +22,22 @@ namespace Snake
             Snake snake = new Snake(tailPoint, 10, Direction.RIGHT);
             snake.Draw();
 
+            FoodProvider foodProvider = new FoodProvider(90, 30, '$');
+            Point food = foodProvider.CreateFood();
+
             while (true)
             {
+                if (snake.Eat(food))
+                {
+                    food = foodProvider.CreateFood();
+                }
+
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo info = Console.ReadKey();
                     snake.HandleClick(info.Key);
                 }
+
                 Thread.Sleep(100);
                 snake.Move();
             }

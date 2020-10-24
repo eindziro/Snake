@@ -32,30 +32,46 @@ namespace Snake.Core
 
         private Point GetNextPoint()
         {
-            Point head = new Point(_list.Last());
-            head.Move(1,_direction);
-            return head;
+
+            Point head = _list.Last();
+            Point nextPoint = new Point(head);
+            nextPoint.Move(1,_direction);
+            return nextPoint;
         }
 
         public void HandleClick(ConsoleKey consoleKey)
         {
             switch (consoleKey)
             {
-                 case ConsoleKey.UpArrow:
-                     _direction = Direction.UP;
-                     break;
-                 case ConsoleKey.DownArrow:
-                     _direction = Direction.DOWN;
-                     break;
-                 case ConsoleKey.RightArrow:
-                     _direction = Direction.RIGHT;
-                     break;
-                 case ConsoleKey.LeftArrow:
-                     _direction = Direction.LEFT;
-                     break;
-                 default:
-                     break;
+                case ConsoleKey.UpArrow:
+                    _direction = Direction.UP;
+                    break;
+                case ConsoleKey.DownArrow:
+                    _direction = Direction.DOWN;
+                    break;
+                case ConsoleKey.RightArrow:
+                    _direction = Direction.RIGHT;
+                    break;
+                case ConsoleKey.LeftArrow:
+                    _direction = Direction.LEFT;
+                    break;
+                default:
+                    break;
             }
+        }
+
+        public bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+
+            if (head.IsHit(food))
+            {
+                food.Sym = head.Sym;
+                _list.Add(food);
+                return true;
+            }
+
+            return false;
         }
     }
 }

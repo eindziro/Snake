@@ -40,6 +40,7 @@
     <ItemGroup>
         <Compile Include="Core\Direction.cs" />
         <Compile Include="Core\Figure.cs" />
+        <Compile Include="Core\FoodProvider.cs" />
         <Compile Include="Core\HorizontalLine.cs" />
         <Compile Include="Core\Point.cs" />
         <Compile Include="Core\Snake.cs" />
