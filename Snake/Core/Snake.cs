@@ -32,10 +32,9 @@ namespace Snake.Core
 
         private Point GetNextPoint()
         {
-
             Point head = _list.Last();
             Point nextPoint = new Point(head);
-            nextPoint.Move(1,_direction);
+            nextPoint.Move(1, _direction);
             return nextPoint;
         }
 
@@ -69,6 +68,18 @@ namespace Snake.Core
                 food.Sym = head.Sym;
                 _list.Add(food);
                 return true;
+            }
+
+            return false;
+        }
+
+        public bool IsHitTail()
+        {
+            Point head = _list.Last();
+            for (int i = 0; i < _list.Count - 2; i++)
+            {
+                if (head.IsHit(_list[i]))
+                    return true;
             }
 
             return false;

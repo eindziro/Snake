@@ -41,10 +41,12 @@
         <Compile Include="Core\Direction.cs" />
         <Compile Include="Core\Figure.cs" />
         <Compile Include="Core\FoodProvider.cs" />
+        <Compile Include="Core\Game.cs" />
         <Compile Include="Core\HorizontalLine.cs" />
         <Compile Include="Core\Point.cs" />
         <Compile Include="Core\Snake.cs" />
         <Compile Include="Core\VerticalLine.cs" />
+        <Compile Include="Core\Walls.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>

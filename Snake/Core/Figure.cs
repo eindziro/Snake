@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Snake.Core
 {
@@ -12,6 +13,28 @@ namespace Snake.Core
             {
                 point.Draw();
             }
+        }
+
+        public bool IsHit(Figure figure)
+        {
+            foreach (Point point in _list)
+            {
+                if (figure.IsHit(point))
+                    return true;
+            }
+
+            return false;
+        }
+
+        public bool IsHit(Point point)
+        {
+            foreach (Point p in _list)
+            {
+                if (p.IsHit(point))
+                    return true;
+            }
+
+            return false;
         }
     }
 }
